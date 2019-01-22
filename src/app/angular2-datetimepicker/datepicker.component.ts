@@ -45,6 +45,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
     toMonthDays: Array<any> = [];
     monthsView: boolean = false;
     today: Date = new Date();
+    newDate: any = null;
     leftDate: Date = new Date();
     rightDate: Date = new Date();
 
@@ -284,6 +285,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
             }
             if (this.settings.closeOnSelect) {
                 this.popover = false;
+                this.newDate = this.date;
                 this.onDateSelect.emit(this.date);
             }
         }
@@ -402,6 +404,7 @@ export class DatePicker implements OnInit, ControlValueAccessor {
     done() {
         this.onChangeCallback(this.date.toString());
         this.popover = false;
+        this.newDate = this.date;
         this.onDateSelect.emit(this.date);
     }
     togglePopover() {
@@ -411,6 +414,10 @@ export class DatePicker implements OnInit, ControlValueAccessor {
         else {
             this.popover = true;
         }
+    }
+    clearDate() {
+        this.newDate = null;
+        this.onDateSelect.emit(null);
     }
     closepopover() {
         this.rangeSelected = 0;

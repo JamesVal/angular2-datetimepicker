@@ -4,14 +4,13 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
   templateUrl: './views/basic.html'
 })
 export class DatePickerExample implements OnInit {
-  date: any = '04-18-1990';
+  date: any = new Date();
   settings = {
-    bigBanner: true,
+    bigBanner: false,
     timePicker: false,
-    format: 'dd-MM-yyyy',
-    defaultOpen: true,
-    closeOnSelect: false,
-    rangepicker: false
+    format: 'yyyy-MM-dd',
+    defaultOpen: false,
+    closeOnSelect: true
   }
   constructor() {
 

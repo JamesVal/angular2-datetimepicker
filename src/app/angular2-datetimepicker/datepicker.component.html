@@ -1,10 +1,14 @@
 <div class="winkel-calendar" (clickOutside)="closepopover()">
     <span *ngIf="!settings.rangepicker">
-    <input type="hidden" class="wc-input" value="{{date}}">
+    <input type="hidden" class="wc-input" placeholder="Any Date" (click)="togglePopover()" readonly value="{{newDate | date:'yyyy-MM-dd'}}">
+    <div class="wc-wrapper">
     <div class="wc-date-container" (click)="popover = !popover">
-        <span>{{date | date: settings.format}}</span>
+        <span *ngIf="newDate">{{newDate | date: settings.format}}</span>
+        <span *ngIf="!newDate">Any Date</span>
     <i class="fa fa-calendar"></i>
 </div>
+    <span *ngIf="newDate" class="clear-date" (click)="clearDate()">X</span>
+    </div>
 </span>
 <div *ngIf="!settings.rangepicker" class="wc-date-popover" [ngClass]="{'banner-true': settings.bigBanner == true}" [hidden]="!popover">
     <div class="wc-banner" *ngIf="settings.bigBanner">
@@ -103,7 +107,7 @@
         </tr>
     </table>
     <div class="cal-util">
-        <div class="clock-icon" *ngIf="!settings.bigBanner">
+        <div class="clock-icon" *ngIf="!settings.bigBanner && false">
             <i class="fa fa-clock-o" aria-hidden="true" (click)="timeView = !timeView"></i>
         </div>
         <div class="ok" (click)="done()"><i class="fa fa-check"></i>Done
@@ -111,7 +115,8 @@
     </div>
 </div>
 <span *ngIf="settings.rangepicker">
-        <input type="hidden" class="wc-input" value="{{date}}">
+        <input type="hidden" class="wc-input" placeholder="Any Date" (click)="togglePopover()" readonly value="{{newDate | date:'yyyy-MM-dd'}}">
+        <span *ngIf="newDate || true" class="clear-date" (click)="clearDate()">X</span>
 <div class="range-input" (click)="togglePopover()">
         <div class="wc-date-container" >
             <span>{{dateRange?.startDate | date: settings.format}}</span>

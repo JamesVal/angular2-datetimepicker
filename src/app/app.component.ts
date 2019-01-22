@@ -8,11 +8,12 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class AppComponent implements OnInit, AfterViewInit {
   date: Date = new Date();
   settings = {
-    bigBanner: true,
-    timePicker: true,
-    format: 'dd-MM-yyyy',
-    defaultOpen: true
-  }
+    bigBanner: false,
+    timePicker: false,
+    format: 'yyyy-MM-dd',
+    defaultOpen: false,
+    closeOnSelect: true
+  }  
   constructor() {
 
   }
